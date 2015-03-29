@@ -127,16 +127,20 @@
           debounce = 0;
         }
       }
-
       function activity() {
         clearDebounce();
-        var pos = completion.cm.getCursor(), line = completion.cm.getLine(pos.line);
+        var pos = completion.cm.getCursor(),
+          line = completion.cm.getLine(pos.line);
         if (pos.line != startPos.line || line.length - pos.ch != startLen - startPos.ch ||
-            pos.ch < startPos.ch || completion.cm.somethingSelected() ||
-            (pos.ch && closeOn.test(line.charAt(pos.ch - 1)))) {
+          pos.ch < startPos.ch || completion.cm.somethingSelected() ||
+          (pos.ch && closeOn.test(line.charAt(pos.ch - 1)))) {
           completion.close();
         } else {
           debounce = requestAnimationFrame(update);
+          completion.cm.removeKeyMap(completion.widget.keyMap);
+          completion.cm.addKeyMap(completion.widget.keyMap = buildKeyMap(completion, {
+            pick: function() {}
+          }));
         }
       }
       this.cm.on("cursorActivity", activity);
