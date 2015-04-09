@@ -94,7 +94,7 @@
       var cur = stream.current();
       if (atoms.propertyIsEnumerable(cur)) { return "atom"; }
       if (/^(?:[@_]?[A-Z]+[a-z][\w$@]*|\w+_t\b)/.test(cur)){
-        return "builtin";
+        return "type";
       }
       if (builtins.propertyIsEnumerable(cur)) { return "builtin"; }
       if (keywords.propertyIsEnumerable(cur)) {
