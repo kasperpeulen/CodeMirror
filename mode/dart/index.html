@@ -6,8 +6,13 @@
 <link rel="stylesheet" href="../../lib/codemirror.css">
 <script src="../../lib/codemirror.js"></script>
 <script src="../clike/clike.js"></script>
+<script src="../../addon/edit/closebrackets.js"></script>
+<link rel="stylesheet" href="../../theme/zenburn.css">
+<link href='https://fonts.googleapis.com/css?family=Inconsolata:400,700'
+      rel='stylesheet' type='text/css'>
+
 <script src="dart.js"></script>
-<style>.CodeMirror {border: 1px solid #dee;}</style>
+<style>.CodeMirror {border: 1px solid #dee; height:auto; font-family: "Inconsolata"; font-size: 14px;}</style>
 <div id=nav>
   <a href="http://codemirror.net"><h1>CodeMirror</h1><img id=logo src="../../doc/logo.png"></a>
 
@@ -41,7 +46,7 @@ class Die {
   int sides, value;
 
   // Define a method using shorthand syntax.
-  String toString() => '$value';
+  String toString() => '${value}';
 
   // Define a constructor.
   Die({int n: 6}) {
@@ -63,8 +68,10 @@ class Die {
 
 <script>
   var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-    lineNumbers: true,
-    mode: "application/dart"
+    lineNumbers: false,
+    mode: "application/dart",
+    autoCloseBrackets: true,
+    theme: "zenburn"
   });
 </script>
 
