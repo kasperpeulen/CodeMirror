@@ -89,7 +89,7 @@
       stream.eatWhile(/[\w\$_]/);
       if (ch == "@") { stream.eatWhile(/[\w\$_\.]/); return "meta"; }
       if (state.lastToken == ".") return "property";
-      if (stream.eat(":")) { curPunc = "proplabel"; return "property"; }
+      //if (stream.eat(":")) { curPunc = "proplabel"; return "property"; }
 
       var cur = stream.current();
       if (atoms.propertyIsEnumerable(cur)) { return "atom"; }
